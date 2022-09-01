@@ -1,10 +1,14 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
+import { Navigate, useNavigate } from "react-router-dom"
 import { Buttons } from "../Components/Buttons"
 import { Inputs } from "../Components/Inputs"
 import StepContainer from "../Layouts/StepContainer"
 //@ts-ignor
 
 export const Form =() => {
+
+    const navigate = useNavigate()
+
     return(
         <>
 
@@ -33,8 +37,9 @@ export const Form =() => {
                     <Inputs placeholder="Project Name "/>
                 </Flex>
                 </Box>
-
-                <Buttons>Next Step</Buttons>
+                         {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore */}
+                <Buttons onClick={navigate('/description')}>Next Step</Buttons>
                 </Box>
 
             </StepContainer>

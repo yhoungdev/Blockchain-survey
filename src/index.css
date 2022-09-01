@@ -1,0 +1,7 @@
+:root {
+    --primary-font : 'General Sans', sans-serif;
+}
+
+.font {
+    font-family: var(--primary-font);
+}

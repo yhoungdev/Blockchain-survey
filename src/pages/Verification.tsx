@@ -41,10 +41,12 @@ export const Verification =() => {
                         </Flex>
 
 
-
+                        
                     </Box>
 
                     <Flex gap={'1em'}>
+                                 {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                         // @ts-ignore */}
                       <Buttons onClick={ e => history.back()}>Back</Buttons>
                       <Buttons bg={'#7f58e2'} color={'#fff'}>Next Step</Buttons>
                     </Flex>
