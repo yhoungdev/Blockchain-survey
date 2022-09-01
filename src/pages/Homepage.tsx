@@ -12,8 +12,9 @@ const Homepage =() => {
               {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                // @ts-ignore */}
                 <Container maxW={['100%' , '50%']}>
-                    <Box>
-                        <Text textAlign={'center'} className={'font'} fontWeight={'bold'} fontSize={'3em'} p={'1.2em'}>
+                    <Box display={'flex'} flexDir={'column'} h={'80vh'} alignContent={'center'} justifyContent={'center'}>
+                        <Text textAlign={'center'} className={'font'} fontWeight={'black'} 
+                        fontSize={['1.8em','3em']} p={'1.2em'} >
                             Fillup crypto survey in Due Minutes Lets know more 
                         </Text>
                         

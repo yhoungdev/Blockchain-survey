@@ -39,7 +39,7 @@ export const Form =() => {
                 </Box>
                          {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore */}
-                <Buttons onClick={navigate('/description')}>Next Step</Buttons>
+                <Buttons bg={'#7f58e2'} color={'#fff'} onClick={navigate('/description')}>Next Step</Buttons>
                 </Box>
 
             </StepContainer>

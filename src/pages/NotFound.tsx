@@ -14,7 +14,7 @@ const NotFound =() => {
            <Text my={'1em'} textAlign={'center'}> The page is not Found </Text>
 
            <Button w={'10%'} _hover={{bg: '#000'}} bg={'#7f58e2'} 
-            onClick={ e => history.back(    )}
+            onClick={ e => history.back()} px={'4em'}
            color={'#fff'} py={'1.6em'} mx={'auto'}> Reload </Button>
                 {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                // @ts-ignore */}
