@@ -51,7 +51,7 @@ const Homepage =() => {
         setLoader(true)
 
         const payload = {
-            name:'default',
+            name: name,
             email : email,
             password : randomPassword ,
             confirmPassword: randomPassword
@@ -114,13 +114,18 @@ const Homepage =() => {
 
                 <ModalContainer isOpen={isReg} onClose={closeReg}>
 
-
+                        <Box my={'0.5em'}>
+                          <Inputs placeholder="Project Name " onChange={ e => setName(e.target.value)}/>
+                        </Box>
                         <Inputs placeholder="Email" onChange={ e => setEmail(e.target.value)}/>
                         
                         <Box my={'1em'}>
                             <Text my={'0.5em'}>
                                 The strings below is your password 
                             </Text>
+
+                            
+
                             <Inputs disabled={true} value={randomPassword} placeholder={randomPassword <=0 ? 'Generate a password ' :'' }/>
 
                             <Button onClick={randomPass}>Generate Password</Button>

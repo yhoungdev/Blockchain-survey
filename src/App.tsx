@@ -6,12 +6,15 @@ import { Form } from './pages/Form'
 import Homepage from './pages/Homepage'
 import NotFound from './pages/NotFound'
 import { Verification } from './pages/Verification'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
  
 
   return (
     <div className="App">
+      <ToastContainer/>
       <Router>
         <Routes>
            <Route path='/' element={<Homepage/>}/>
