@@ -5,7 +5,7 @@ import ModalContainer from "../Components/ModalContainer";
 import { Inputs } from "../Components/Inputs";
 import { Buttons } from "../Components/Buttons";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import {postData} from '../utils/request'
 import { generate } from 'generate-password';
 
@@ -13,7 +13,7 @@ import { generate } from 'generate-password';
 
 const Homepage =() => {
 
-  
+    const navigate = useNavigate();
     
 
     const [email , setEmail ] = useState('');
@@ -25,9 +25,15 @@ const Homepage =() => {
     const [ randomPassword , setRandomePassword ] = useState();
 
 
+    //user login 
+    const [ loginEmail , setLoginEmail ] = useState();
+    const [ loginPassword , setLoginPassword ] = useState()
+
+
     const [loader , setLoader ] = useState(false)
     //initlized login
     const {isOpen: isReg , onOpen:onReg , onClose: closeReg } = useDisclosure()
+    const {isOpen: isSign , onOpen:onSign , onClose: closeSign } = useDisclosure()
 
 
     //function to gerate password 
@@ -61,9 +67,12 @@ const Homepage =() => {
             const response =  await postData('/admin/signup', payload );
             setLoader(false);
                //check if status is sucess 
-               if(response.response._id) {
+              
+               if(response.response.admin._id) {
                   //set item to localStorage 
-                
+                  localStorage.setItem('token' , response.response.admin._id)
+                  navigate('/survey')
+
                } 
 
 
@@ -74,7 +83,61 @@ const Homepage =() => {
             setLoader(false)
         }
     }
+
+
+    //open sign in and close signup
+    const openSign =() => {
+        onSign()
+        closeReg()
+    }
+
+
+    //open sign up and close signin
+    const openSignup =() => {
+        onReg()
+        closeSign()
+    }
     
+
+
+    //login 
+    const login=()=> {
+
+        setLoader(true)
+        const createAccount = async () => {
+
+        
+            setLoader(true)
+    
+            const payload = {
+               
+                email : loginEmail,
+                password : loginPassword ,
+          
+            }
+            try {
+               
+                const response =  await postData('/admin/login', payload );
+                setLoader(false);
+                   //check if status is sucess 
+                  
+                   if(response.response.admin._id) {
+                      //set item to localStorage 
+                      localStorage.setItem('token' , response.response.admin._id)
+                      navigate('/survey')
+    
+                   } 
+    
+    
+    
+                   
+            } catch ( error ) {
+                
+                setLoader(false)
+            }
+        }
+
+    }
     return (
         <>
 
@@ -138,7 +201,39 @@ const Homepage =() => {
                             >
                             Sign up
                         </Buttons>
+
+                        <Text my={'0.5em'} textAlign={'center'} cursor={'pointer'} onClick={openSign}>Sign In</Text>
                 </ModalContainer>
+
+
+
+
+
+
+                <ModalContainer isOpen={isSign} onClose={closeSign}>
+
+                        <Inputs placeholder="Email" onChange={ e => setLoginEmail(e.target.value)}/>
+                        
+                        <Box my={'1em'}>
+                           
+
+                            
+
+                            <Inputs placeholder="paste password" onChange={ e => setLoginPassword(e.target.value)} />  
+                        </Box>
+
+                        <Buttons bg={'var(--primary-color)'} color={'#fff'}
+                            loadingText={'Please Wait'}
+                            isLoading={loader}
+                            onClick={login}
+                            >
+                            Sign In
+                        </Buttons>
+
+                        <Text my={'0.5em'} textAlign={'center'} cursor={'pointer'} onClick={openSignup}>Sign up</Text>
+                </ModalContainer>
+
+                {/* Sign in */}
        
          </Box>
         

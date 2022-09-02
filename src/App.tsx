@@ -8,9 +8,17 @@ import NotFound from './pages/NotFound'
 import { Verification } from './pages/Verification'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom'
 
 function App() {
- 
+
+
+  
+  //check if localStorage is present
+  if(!localStorage.getItem('token')) {
+
+     
+  }
 
   return (
     <div className="App">
