@@ -17,6 +17,8 @@ export const Inputs =({ placeholder, onChange, value , type, disabled }:FormItem
             <FormControl>
                 {/* @ts-nocheck */}
                  <Input placeholder={placeholder} value={value}
+                      /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */
                  disabled={disabled} onChange={onChange}
                  type={type} variant={"filled"} py={'1.5em'}/>
                  

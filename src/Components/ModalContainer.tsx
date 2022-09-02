@@ -21,7 +21,8 @@ interface ModalModel {
 const ModalContainer =({isOpen , onOpen, children , onClose } : ModalModel) => {
     return (
         <>
-        
+            {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore   */}
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
