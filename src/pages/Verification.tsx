@@ -141,7 +141,7 @@ export const Verification =() => {
                             <>
 
                                 <form>
-                                    <Text my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent to {email} (Sol: 0) <span style={{color:'red'}}>Unverified</span> </Text>
+                                    <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent to <Text fontWeight={'bold'} >{email}</Text> (Sol: 0) <span style={{color:'red'}}>Unverified</span> </Text>
                                     <InputGroup display={hide}>
                                     <Input 
                                          type={'email'}
