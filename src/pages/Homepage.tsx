@@ -4,7 +4,7 @@ import {useAuth0} from '@auth0/auth0-react'
 import ModalContainer from "../Components/ModalContainer";
 import { Inputs } from "../Components/Inputs";
 import { Buttons } from "../Components/Buttons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
      /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore  */
@@ -15,8 +15,11 @@ import { generate } from 'generate-password';
 
 const Homepage =() => {
 
+   
+
     const navigate = useNavigate();
     
+ 
 
     const [email , setEmail ] = useState('');
     const [password , setPassword ] = useState('');
@@ -90,6 +93,15 @@ const Homepage =() => {
     }
 
 
+    useEffect(() => {
+        if(localStorage.getItem('tokenId')) {
+            navigate('/survey')
+        } else {
+            navigate('/')
+        }
+    }, [])
+
+
     //open sign in and close signup
     const openSign =() => {
         onSign()
@@ -129,7 +141,9 @@ const Homepage =() => {
                    if(response.response.token) {
                       //set item to localStorage 
                       localStorage.setItem('tokenId' , response.response.token)
-                      navigate('/survey')
+                      if(localStorage.getItem('tokenId')) {
+                        navigate('/survey')
+                      }
     
                    } 
 
@@ -141,7 +155,9 @@ const Homepage =() => {
                 setLoader(false)
             }
         
-
+            if(localStorage.getItem('tokenId')) {
+                navigate('/survey')
+              }
     }
     return (
         <>

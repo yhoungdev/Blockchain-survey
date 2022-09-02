@@ -15,10 +15,7 @@ function App() {
 
   
   //check if localStorage is present
-  if(!localStorage.getItem('token')) {
-
-     
-  }
+  
 
   return (
     <div className="App">
