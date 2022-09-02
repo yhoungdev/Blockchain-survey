@@ -5,3 +5,9 @@
 .font {
     font-family: var(--primary-font);
 }
+
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: bold;
+}

@@ -16,9 +16,9 @@ const StepContainer =({children , step, title}: StepModel) => {
                 // @ts-ignore */}
                     <Flex bg={'#fff'} p={'2em'} borderRadius={'0.5em'} my={'2em'} flexDir={'column'} h={'100%'} justifyContent={'center'}>
                     <Box fontWeight={'bold'} my={"1em"}>
-                        <Text fontWeight={'bold'}>{step} /3</Text>
+                        <Text fontWeight={'bold'} color={"#7f58e2"}>{step} /3</Text>
 
-                        <Text my={'1em'} fontWeight={'bold'} fontSize={'1.6em'}>{title }</Text>
+                        <Text my={'1em'} fontWeight={'bold'} className={'font'} fontSize={'1.6em'}>{title }</Text>
                      </Box>
 
                      {children}

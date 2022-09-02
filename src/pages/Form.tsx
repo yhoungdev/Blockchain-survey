@@ -21,25 +21,20 @@ export const Form =() => {
             // @ts-ignore */}
                 <Box display={'flex'} my={'0.5em'} flexDir={['column' , 'row']} gap={'1em'}>   
                     <Inputs placeholder="Project Name "/>
-                    <Inputs placeholder="Project Name "/>
+                   
                 </Box>
 
                 <Box my={'1em'}>
-                    <Text>Link</Text>
-                    <Box display={'flex'} my={'1em'} flexDir={['column' , 'row']} gap={'1em'}>   
-                    <Inputs placeholder="Project Name "/>
-                    <Inputs placeholder="Project Name "/>
-                    <Inputs placeholder="Project Name "/>
-                </Box>
+                    
 
                 <Flex flexDir={'column'} gap={'1em'}>
-                    <Inputs placeholder="Project Name "/>
-                    <Inputs placeholder="Project Name "/>
+                    <Inputs placeholder="Email Address "/>
+                    <Inputs placeholder="Address "/>
                 </Flex>
                 </Box>
                          {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore */}
-                <Buttons bg={'#7f58e2'} color={'#fff'} onClick={navigate('/description')}>Next Step</Buttons>
+                <Buttons bg={'#7f58e2'} color={'#fff'} onClick={ e => navigate('/description')}>Next Step</Buttons>
                 </Box>
 
             </StepContainer>

@@ -40,11 +40,15 @@ export const Verification =() => {
                             </Buttons>
                         </Flex>
 
+                        <Box>
+                            <Text mb={'1em'}> I Want this </Text>
+                        </Box>
+
 
                         
                     </Box>
 
-                    <Flex gap={'1em'}>
+                    <Flex gap={'1em'} flexDir={['column-reverse']}>
                                  {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                          // @ts-ignore */}
                       <Buttons onClick={ e => history.back()}>Back</Buttons>
