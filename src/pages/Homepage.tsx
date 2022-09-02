@@ -106,10 +106,10 @@ const Homepage =() => {
 
 
     //login 
-    const login=()=> {
+    const login=  async ()=> {
 
         setLoader(true)
-        const createAccount = async () => {
+      
 
         
             setLoader(true)
@@ -140,7 +140,7 @@ const Homepage =() => {
                 
                 setLoader(false)
             }
-        }
+        
 
     }
     return (
