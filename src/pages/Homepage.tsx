@@ -1,12 +1,80 @@
-import { Box, Button, Container , Text} from "@chakra-ui/react";
+import { Box, Button, Container , useDisclosure, Text} from "@chakra-ui/react";
 import { ContainerLayout } from "../Layouts/ContainerLayou";
 import {useAuth0} from '@auth0/auth0-react'
+import ModalContainer from "../Components/ModalContainer";
+import { Inputs } from "../Components/Inputs";
+import { Buttons } from "../Components/Buttons";
+import { useState } from "react";
+
+import {postData} from '../utils/request'
+import { generate } from 'generate-password';
+
+
 
 const Homepage =() => {
 
-    //initlized login
-    const { loginWithRedirect } = useAuth0();
+  
+    
 
+    const [email , setEmail ] = useState('');
+    const [password , setPassword ] = useState('');
+    const [name , setName ] = useState()
+    const [confirmPassword , setConfirmPassword ] = useState()
+
+    //state to gerate random password 
+    const [ randomPassword , setRandomePassword ] = useState();
+
+
+    const [loader , setLoader ] = useState(false)
+    //initlized login
+    const {isOpen: isReg , onOpen:onReg , onClose: closeReg } = useDisclosure()
+
+
+    //function to gerate password 
+    const randomPass = () => {
+        const items = ['!Solnawe3r453','!Polnawe3eq453',
+        'Uo!olnawe3r453', '!pZNo@nawe3r453',
+        '@Sol!ioxwgrpz', 'Pqrstuv@d23'    
+         ]
+        //now generate rand int 
+        const generatePassword = items[Math.floor(Math.random()*items.length)]
+        setRandomePassword(generatePassword)
+        console.log(generatePassword)
+
+        console.log(randomPassword)
+    }
+
+    //handle form creation 
+    const createAccount = async () => {
+
+        
+        setLoader(true)
+
+        const payload = {
+            name:'default',
+            email : email,
+            password : randomPassword ,
+            confirmPassword: randomPassword
+        }
+        try {
+           
+            const response =  await postData('/admin/signup', payload );
+            setLoader(false);
+               //check if status is sucess 
+               if(response.response._id) {
+                  //set item to localStorage 
+                
+               } 
+
+
+
+               
+        } catch ( error ) {
+            
+            setLoader(false)
+        }
+    }
+    
     return (
         <>
 
@@ -31,7 +99,7 @@ const Homepage =() => {
                         <Button w={'30%'} _hover={{bg: '#000'}} 
                         
                         bg={'#7f58e2'} color={'#fff'} py={'1.6em'} mx={'auto'}
-                        onClick={ e => loginWithRedirect()}
+                        onClick={ e => onReg()}
                         
                         >
                             Login 
@@ -43,6 +111,29 @@ const Homepage =() => {
                         </center>
                     </Box>
                 </Container>
+
+                <ModalContainer isOpen={isReg} onClose={closeReg}>
+
+
+                        <Inputs placeholder="Email" onChange={ e => setEmail(e.target.value)}/>
+                        
+                        <Box my={'1em'}>
+                            <Text my={'0.5em'}>
+                                The strings below is your password 
+                            </Text>
+                            <Inputs disabled={true} value={randomPassword} placeholder={randomPassword <=0 ? 'Generate a password ' :'' }/>
+
+                            <Button onClick={randomPass}>Generate Password</Button>
+                        </Box>
+
+                        <Buttons bg={'var(--primary-color)'} color={'#fff'}
+                            loadingText={'Please Wait'}
+                            isLoading={loader}
+                            onClick={createAccount}
+                            >
+                            Sign up
+                        </Buttons>
+                </ModalContainer>
        
          </Box>
         
