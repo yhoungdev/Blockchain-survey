@@ -1,7 +1,12 @@
 import { Box, Button, Container , Text} from "@chakra-ui/react";
 import { ContainerLayout } from "../Layouts/ContainerLayou";
+import {useAuth0} from '@auth0/auth0-react'
 
 const Homepage =() => {
+
+    //initlized login
+    const { loginWithRedirect } = useAuth0();
+
     return (
         <>
 
@@ -23,8 +28,13 @@ const Homepage =() => {
                 // @ts-ignore */}
                         <center>
                         
-                        <Button w={'30%'} _hover={{bg: '#000'}} bg={'#7f58e2'} color={'#fff'} py={'1.6em'} mx={'auto'}>
-                            Fill Survey
+                        <Button w={'30%'} _hover={{bg: '#000'}} 
+                        
+                        bg={'#7f58e2'} color={'#fff'} py={'1.6em'} mx={'auto'}
+                        onClick={ e => loginWithRedirect()}
+                        
+                        >
+                            Login 
                         </Button>
 
                                    
