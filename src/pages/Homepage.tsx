@@ -42,7 +42,7 @@ const Homepage =() => {
     const randomPass = () => {
         const items = ['!Solnawe3r453','!Polnawe3eq453',
         'Uo!olnawe3r453', '!pZNo@nawe3r453',
-        '@Sol!ioxwgrpz', 'Pqrstuv@d23'    
+        '@Sol!ioxwgrpz001', 'Pqrstuv@d23'    
          ]
         //now generate rand int 
         const generatePassword = items[Math.floor(Math.random()*items.length)]
@@ -126,13 +126,13 @@ const Homepage =() => {
                 setLoader(false);
                    //check if status is sucess 
                   
-                   if(response.response.admin._id) {
+                   if(response.response.token) {
                       //set item to localStorage 
-                      localStorage.setItem('token' , response.response.admin._id)
+                      localStorage.setItem('tokenId' , response.response.token)
                       navigate('/survey')
     
                    } 
-    
+
     
     
                    
