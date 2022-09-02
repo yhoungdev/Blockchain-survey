@@ -6,6 +6,8 @@ import { Inputs } from "../Components/Inputs";
 import { Buttons } from "../Components/Buttons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+     /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */
 import {postData} from '../utils/request'
 import { generate } from 'generate-password';
 
@@ -44,6 +46,8 @@ const Homepage =() => {
          ]
         //now generate rand int 
         const generatePassword = items[Math.floor(Math.random()*items.length)]
+             /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */
         setRandomePassword(generatePassword)
         console.log(generatePassword)
 
@@ -174,12 +178,21 @@ const Homepage =() => {
                         </center>
                     </Box>
                 </Container>
+                                          
+              {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore */}
 
                 <ModalContainer isOpen={isReg} onClose={closeReg}>
 
                         <Box my={'0.5em'}>
+                                                      
+              {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore */}
                           <Inputs placeholder="Project Name " onChange={ e => setName(e.target.value)}/>
                         </Box>
+                                                  
+              {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore */}
                         <Inputs placeholder="Email" onChange={ e => setEmail(e.target.value)}/>
                         
                         <Box my={'1em'}>
@@ -188,7 +201,8 @@ const Homepage =() => {
                             </Text>
 
                             
-
+                             {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore   */}
                             <Inputs disabled={true} value={randomPassword} placeholder={randomPassword <=0 ? 'Generate a password ' :'' }/>
 
                             <Button onClick={randomPass}>Generate Password</Button>
@@ -196,7 +210,13 @@ const Homepage =() => {
 
                         <Buttons bg={'var(--primary-color)'} color={'#fff'}
                             loadingText={'Please Wait'}
+                                                      
+              /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore */
                             isLoading={loader}
+                                                      
+              /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore */
                             onClick={createAccount}
                             >
                             Sign up
@@ -209,22 +229,30 @@ const Homepage =() => {
 
 
 
-
+                 {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore  */}
                 <ModalContainer isOpen={isSign} onClose={closeSign}>
-
+                {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+               // @ts-ignore  */}
                         <Inputs placeholder="Email" onChange={ e => setLoginEmail(e.target.value)}/>
                         
                         <Box my={'1em'}>
                            
 
-                            
+                                 {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */}   
 
                             <Inputs placeholder="paste password" onChange={ e => setLoginPassword(e.target.value)} />  
                         </Box>
 
                         <Buttons bg={'var(--primary-color)'} color={'#fff'}
                             loadingText={'Please Wait'}
+
+                                 /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */
                             isLoading={loader}
+                                 /* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore  */
                             onClick={login}
                             >
                             Sign In
