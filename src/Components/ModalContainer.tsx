@@ -26,7 +26,7 @@ const ModalContainer =({isOpen , onOpen, children , onClose } : ModalModel) => {
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Welcome</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
              {children}

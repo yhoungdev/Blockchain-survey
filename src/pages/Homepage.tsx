@@ -57,7 +57,8 @@ const Homepage =() => {
     //handle form creation 
     const createAccount = async () => {
 
-        
+        //now set email to create account 
+        localStorage.setItem('savedEmail' , email);
         setLoader(true)
 
         const payload = {

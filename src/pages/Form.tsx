@@ -20,7 +20,9 @@ export const Form =() => {
                     {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore */}
                 <Box display={'flex'} my={'0.5em'} flexDir={['column' , 'row']} gap={'1em'}>   
-                    <Inputs placeholder="Project Name "/>
+                     {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore */}
+                    <Inputs placeholder="Email Address" value={localStorage.getItem('savedEmail')} disabled={true}/>
                    
                 </Box>
 
@@ -28,7 +30,9 @@ export const Form =() => {
                     
 
                 <Flex flexDir={'column'} gap={'1em'}>
-                    <Inputs placeholder="Email Address "/>
+                    {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore */}
+                    <Inputs placeholder="Project Name "/>
                     <Inputs placeholder="Address "/>
                 </Flex>
                 </Box>
