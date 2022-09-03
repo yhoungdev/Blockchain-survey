@@ -16,6 +16,8 @@
     "@chakra-ui/react": "^2.3.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@solana/spl-token": "^0.1.6",
     "@solana/wallet-adapter-base": "^0.9.4",
     "@solana/wallet-adapter-react": "^0.15.3",
@@ -25,6 +27,7 @@
     "@supabase/supabase-js": "^1.35.6",
     "axios": "^0.27.2",
     "buffer": "^6.0.3",
+    "events": "^3.3.0",
     "framer-motion": "^7.2.1",
     "generate-password": "^1.7.0",
     "react": "^18.2.0",
@@ -32,6 +35,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.8",
+    "util": "^0.12.4",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
