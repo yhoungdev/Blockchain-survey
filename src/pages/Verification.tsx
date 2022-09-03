@@ -18,9 +18,8 @@ import * as splToken from "@solana/spl-token";
 import { Token } from '@solana/spl-token';
 //import { Funny } from './Buy'
 
-
-require('./App.css');
-require('@solana/wallet-adapter-react-ui/styles.css');
+// require('./App.css');
+// require('@solana/wallet-adapter-react-ui/styles.css');
 
 //@ts-no-checks
 import { Box, Flex, Button, Image, Textarea, Text, Input, FormControl, InputLeftAddon, InputGroup, InputLeftElement } from "@chakra-ui/react"
