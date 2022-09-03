@@ -12,7 +12,7 @@ export const Form =() => {
     return(
         <>
 
-            <StepContainer step={1} title={'Top Credibility'}>
+            <StepContainer step={1} title={'General'}>
                      {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                      // @ts-ignore */}
                 <Box my={'1em'}>
@@ -33,7 +33,7 @@ export const Form =() => {
                     {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore */}
                     <Inputs placeholder="Project Name "/>
-                    <Inputs placeholder="Address "/>
+                    <Inputs placeholder="Symbol "/>
                 </Flex>
                 </Box>
                          {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
