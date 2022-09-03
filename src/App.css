@@ -3,3 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.buttons button.restart{
+  color: #fff !important;
+  background: #007bff !important;
+}
+
+.buttons button.restart:hover{
+  background: #0263ca !important;
+}
+
+.adjustWallet{
+  height: 30px !important;
+  align-self: center !important;
+  text-align: center !important;
+  align-items: center !important;
+}
