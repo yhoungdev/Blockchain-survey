@@ -178,6 +178,7 @@ export const Verification =() => {
                                         <InputLeftElement children={<FiMail/>} py={'1.6em'} />
                                     </InputGroup>
 
+                                    
 
                                     <Button w={'100%'} bg={'#7f58e2'}
                                      _hover={{bg:'purple.600'}} color={'#fff'}
