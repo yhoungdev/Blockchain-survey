@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600&f[]=nunito@300,201,600,400,500&f[]=satoshi@900&f[]=clash-grotesk@700,600&f[]=general-sans@600,700&display=swap" rel="stylesheet">
     <title>Survey</title>
+    <script>
+      window.global = window;
+    </script>
+      <script type="module">
+        import process from "process";
+        import EventEmitter from "events";
+        import {Buffer} from "buffer";
+        window.Buffer = Buffer;
+        window.process = process;
+        window.EventEmitter = EventEmitter;
+      </script>
   </head>
   <body>
     <div id="root"></div>

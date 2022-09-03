@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import GlobalPolyFill from "@esbuild-plugins/node-globals-polyfill";
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 // https://vitejs.dev/config/
 // export default defineConfig({
@@ -11,16 +12,22 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 export default defineConfig({
   build: { target: "es2020" },
   optimizeDeps: {
-    esbuildOptions: { target: "es2020", supported: { bigint: true } }
+    esbuildOptions: { 
+      target: "es2020",
+     supported: { bigint: true },
+     define: {
+      global: 'globalThis'
   },
-  define: {
-    global: 'globalThis'
-},
-  plugins: [
-    react(),
+
+
+  //ends here 
+}
+  },
+  plugins: [react(),
     NodeGlobalsPolyfillPlugin({
-      buffer: true
+      buffer: true,
+      process: true,
   })
-    ]
+  ]
 // plugins: [reactRefresh()]
 })
