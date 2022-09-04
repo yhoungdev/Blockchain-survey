@@ -10,15 +10,14 @@ export const Description =() => {
     return(
         <>
 
-            <StepContainer step={2} title={'Breif description about team and background'}>
+            <StepContainer step={2} title={'Brief description about the team'}>
                      {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                      // @ts-ignore */}
                 <Box my={'1em'}>
                     
                     {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore */}
-                  <Textarea placeholder="Are you capable of funding the project, How many sol are you holding? write a bried description
-                        about you and also specify how many sol you are holding " 
+                  <Textarea placeholder="Is the team capable of providing capital the project? What does the team intend to do with funds after mint out?" 
                   my={'1em'} h={'30vh'} variant={'filled'} />
 
                     <Flex gap={'1em'}>

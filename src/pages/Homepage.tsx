@@ -251,7 +251,7 @@ const Homepage =() => {
                 <ModalContainer isOpen={isSign} onClose={closeSign}>
                 {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                // @ts-ignore  */}
-                        <Inputs placeholder="Email" onChange={ e => setLoginEmail(e.target.value)}/>
+                        <Inputs placeholder="Email" type="email" onChange={ e => setLoginEmail(e.target.value)}/>
                         
                         <Box my={'1em'}>
                            
@@ -259,7 +259,7 @@ const Homepage =() => {
                                  {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore  */}   
 
-                            <Inputs placeholder="paste password" onChange={ e => setLoginPassword(e.target.value)} />  
+                            <Inputs placeholder="paste password" type="password" onChange={ e => setLoginPassword(e.target.value)} />  
                         </Box>
 
                         <Buttons bg={'var(--primary-color)'} color={'#fff'}
