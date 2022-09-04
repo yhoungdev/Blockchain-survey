@@ -102,6 +102,11 @@ export const Verification =() => {
         
     }
 
+    //handle form action 
+    const handleForm =(e:any)=> {
+        e.target.preventDefault()
+    }
+
     useEffect(() => {
 
     }, [])
@@ -169,7 +174,7 @@ export const Verification =() => {
                         ) : (
                             <>
 
-                                <form>
+                                <form onSubmit={handleForm}>
                                     <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'red'}}>Status : Unverified</span> </Text>
                                     <InputGroup display={hide}>
                                     <Input 
