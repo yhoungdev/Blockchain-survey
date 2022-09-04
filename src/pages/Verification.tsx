@@ -181,7 +181,7 @@ export const Verification =() => {
                                         email == 'julietaallendorf@gmail.com' ? (
                                             <>
 
-                                        <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'green'}}>Status : verified</span> </Text>
+                                        <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Accepted <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 542.8 <br/> <span style={{color:'green'}}>Status : verified</span> </Text>
                                             
                                             </>
                                         ) : (
