@@ -69,7 +69,8 @@ export const Verification =() => {
             //check if value is empthy 
             if(val <= 0|| val === null || val === '') {
                 setDisabled(true )
-            } else {
+            }
+             else {
                 setDisabled(false )
                 setEmail(val)
             }
@@ -175,7 +176,23 @@ export const Verification =() => {
                             <>
 
                                 <form onSubmit={handleForm}>
-                                    <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'red'}}>Status : Unverified</span> </Text>
+
+                                    {
+                                        email == 'julietaallendorf@gmail.com' ? (
+                                            <>
+
+                                        <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'green'}}>Status : verified</span> </Text>
+                                            
+                                            </>
+                                        ) : (
+                                            <>
+                                            
+                                            <Text  my={'1em'} fontWeight={'bold'} display={ !hide ? 'none' : 'block' }>Request Sent To <Text fontWeight={'bold'} >{email}</Text> Sol Balance : 0 <br/> <span style={{color:'red'}}>Status : Unverified</span> </Text>
+                                            
+                                            </>
+                                        )
+                                    }
+                                    
                                     <InputGroup display={hide}>
                                     <Input 
                                          type={'email'}
